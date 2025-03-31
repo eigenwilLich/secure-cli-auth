@@ -1,0 +1,25 @@
+# Bytecode-Dateien
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtuelle Umgebungen
+venv/
+.env/
+
+# Editor-/IDE-Dateien
+.vscode/
+.idea/
+
+# Betriebssystemspezifisch
+.DS_Store
+Thumbs.db
+
+# SQLite-Datenbank
+*.db
+
+# Log-Dateien
+*.log
+
+# Sonstige sensible Dateien
+.env
