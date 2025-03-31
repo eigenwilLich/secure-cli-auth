@@ -1,7 +1,7 @@
 
 # 🔐 Secure CLI Authentication Tool (Python + Argon2 + SQLite)
 
-Ein sicheres, modular aufgebautes CLI-Tool zur Benutzerverwaltung. Ideal zum Lernen, Üben oder als Grundlage für weiterführende Projekte.
+Ein sicheres, modular aufgebautes CLI-Tool zur Benutzerverwaltung. 
 
 ## ✅ Unterstützte Funktionen
 
