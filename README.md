@@ -1,54 +1,59 @@
 
 # 🔐 Secure CLI Authentication Tool (Python + Argon2 + SQLite)
 
-Ein kleines, sicheres CLI-Tool zur Benutzerverwaltung mit Passwort-Hashing nach dem Stand der Technik. Es nutzt:
+Ein sicheres, modular aufgebautes CLI-Tool zur Benutzerverwaltung. Ideal zum Lernen, Üben oder als Grundlage für weiterführende Projekte.
 
-- 🧂 Salt (automatisch in Argon2 enthalten)
-- 🌶️ Pepper (aus `.env`)
-- 🛡️ Argon2 (empfohlener Hashing-Algorithmus)
-- 🗃️ SQLite zur Datenspeicherung
+## ✅ Unterstützte Funktionen
 
-## 📦 Installation
+- 🧂 Salt: automatisch in Argon2 enthalten
+- 🌶️ Pepper: aus `.env` geladen
+- 🔐 Passwort-Hashing mit Argon2
+- 🗃️ SQLite als einfache Datenbanklösung
+- 👤 Benutzerregistrierung
+- 🔓 Login mit Passwortprüfung
+- 🔄 Passwort ändern (mit Bestätigung)
+- 🗑️ Benutzer löschen (nach Passwortprüfung)
+- 📃 Benutzer auflisten
+- 📤 Benutzer als JSON-Datei exportieren
 
-1. **Projekt klonen**  
+---
+
+## Installation
+
+1. **Projekt klonen**
    ```bash
    git clone https://github.com/eigenwilLich/secure-cli-auth.git
    cd secure-cli-auth
    ```
 
-2. **Virtuelle Umgebung (optional, empfohlen)**  
+2. **Virtuelle Umgebung erstellen (optional)**
    ```bash
    python -m venv venv
-   source venv/bin/activate    # Linux/macOS
+   source venv/bin/activate      # Linux/macOS
    venv\Scripts\activate.bat   # Windows
    ```
 
-3. **Abhängigkeiten installieren**  
+3. **Abhängigkeiten installieren**
    ```bash
    pip install -r requirements.txt
    ```
 
-4. **.env-Datei anlegen**  
-   Erstelle eine `.env`-Datei mit folgendem Inhalt:
-
-   ```
+4. **.env-Datei anlegen**
+   ```ini
    PEPPER_SECRET=dein_geheimer_pepper
    ```
 
 ---
 
-## 🧪 Verwendung
-
-Benutzer registrieren:
+## Nutzung
 
 ```bash
-python main.py register benutzername
-```
-
-Einloggen:
-
-```bash
-python main.py login benutzername
+python cli.py register benutzername      # Benutzer registrieren
+python cli.py login benutzername         # Login durchführen
+python cli.py change benutzername        # Passwort ändern
+python cli.py delete benutzername        # Benutzer löschen
+python cli.py list                       # Alle Benutzer auflisten
+python cli.py export                     # Benutzer nach users.json exportieren
 ```
 
 ---
@@ -56,11 +61,12 @@ python main.py login benutzername
 ## 📁 Projektstruktur
 
 ```
-secure-auth/
-├── auth.py           # Logik für Registrierung & Login
-├── main.py           # CLI-Einstiegspunkt
-├── users.db          # SQLite-Datenbank (automatisch erzeugt)
-├── .env              # Enthält geheimen Pepper
+secure-cli-auth/
+├── auth.py           # Alle Funktionen zur Benutzerverwaltung
+├── cli.py            # CLI-Einstiegspunkt (Argumentparser)
+├── users.db          # SQLite-Datenbank (automatisch erstellt)
+├── .env              # Enthält geheimes PEPPER_SECRET
+├── .gitignore        # Ignoriert sensible/temporäre Dateien
 ├── requirements.txt  # Abhängigkeiten
 └── README.md         # Diese Datei
 ```
@@ -69,20 +75,21 @@ secure-auth/
 
 ## 🔐 Sicherheitshinweise
 
-- Der **Pepper** wird nicht gespeichert und erhöht die Sicherheit massiv.
-- Die Passwörter werden mit **Argon2 gehasht**, was sehr sicher gegen Brute-Force ist.
-- `argon2-cffi` verwendet sichere Voreinstellungen – du kannst diese bei Bedarf anpassen.
+- Der **Pepper** sollte geheim bleiben – verwende `.env`, niemals fest im Code!
+- **Argon2** ist aktuell einer der sichersten Algorithmen für Passwort-Hashing.
+- Alle Passwortoperationen erfolgen sicher (kein Klartext-Speichern oder -Vergleich).
 
 ---
 
-## ✅ Noch offen?
+## 🧠 und in Zukunft?
 
-- Passwort ändern
-- Benutzer löschen
-- Export in CSV oder JSON
+- [ ] Admin-Funktion mit Login
+- [ ] Import aus JSON
+- [ ] Web-Frontend (Flask, Django)
+- [ ] Logging mit `logging`-Modul
 
 ---
 
 ## ⚖️ Lizenz
 
-MIT – frei nutzbar.
+MIT – frei nutzbar, veränderbar und erweiterbar.
